@@ -1,0 +1,153 @@
+/* @group Reset */
+
+	* {
+		border: none;
+		box-sizing: border-box;
+		font-family: inherit;
+		font-size: 100%;
+		font-style: inherit;
+		font-weight: inherit;
+		list-style: none;
+		margin: 0;
+		outline: none;
+		padding: 0;
+		vertical-align: baseline;
+	}
+	body {
+		background: hsl(0, 0%, 10%);
+		color: hsla(0, 0%, 80%, 0.6);
+		cursor: default;
+		font-family: 'cantarell', sans-serif;
+		font-size: 18px;
+		line-height: 23px;
+		padding: 80px 20px;
+	}
+	a {
+		color: #000000;
+		text-decoration: none;
+	}
+	*:first-child {
+		margin-top: 0;
+	}
+	*:last-child {
+		margin-bottom: 0;
+	}
+
+/* @end */
+
+/* @group Header */
+
+	body > header {
+		color: hsla(0, 0%, 100%, 0.5);
+		font-family: 'waiting for the sunrise', sans-serif;
+		font-size: 32px;
+		line-height: 40px;
+		margin: auto;
+		padding: 0 20px 20px 20px;
+		width: 645px;
+	}
+	body > header h1 {
+		color: hsla(0, 0%, 100%, 0.5);
+		font-family: 'josefin slab', sans-serif;
+		font-size: 110px;
+		font-weight: 400;
+		line-height: 95px;
+		margin: 0 0 80px 0;
+		text-shadow: 2px 2px 0 hsl(0, 0%, 0%);
+	}
+	body > header h1 em {
+		color: hsla(0, 0%, 100%, 0.8);
+		display: block;
+		font-size: 153px;
+		font-weight: 700;
+		text-indent: -2px;
+	}
+	body > header p {
+		margin: 20px 0;
+	}
+	body > header p code,
+	body > header p em {
+		color: hsla(0, 0%, 100%, 0.8);
+		font-size: 36px;
+	}
+	body > header nav {
+		margin: 20px 0;
+	}
+	body > header nav a {
+		color: hsla(0, 0%, 100%, 0.8);
+	}
+	body > header nav li {
+		display: inline-block;
+	}
+	body > header nav li + li:before {
+		content: ',';
+		margin: 0 0.8ex 0 0;
+	}
+	body > header nav li + li:last-child:before {
+		content: 'and';
+		margin: 0 0.8ex;
+	}
+	body > header nav li:last-child:after {
+		content: '.';
+	}
+
+/* @end */
+
+/* @group Article */
+
+	body > article {
+		background: hsla(0, 0%, 0%, 0.2);
+		border-radius: 20px;
+		display: none;
+		margin: 20px auto 0 auto;
+		padding: 20px 20px 0 20px;
+		width: 645px;
+	}
+	body > article:target {
+		display: block;
+	}
+	body > article h1 {
+		font-family: 'waiting for the sunrise', sans-serif;
+		font-size: 35px;
+		font-weight: 700;
+		line-height: 35px;
+		margin: 0 0 20px 0;
+	}
+	body > article a,
+	body > article code,
+	body > article em {
+		color: hsla(0, 0%, 80%, 0.9);
+	}
+	body > article p {
+		margin: 10px 0;
+	}
+	body > article pre {
+		border-top: 10px solid hsla(0, 0%, 100%, 0.05);
+		font-family: 'inconsolata', sans-serif;
+		font-size: 16px;
+		line-height: 20px;
+		margin: 20px 0;
+		padding: 20px 0 0 0;
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+	}
+	body > article pre span.comment {
+		color: hsla(0, 0%, 80%, 0.3);
+	}
+	body > article pre span.keyword {
+		color: hsla(0, 0%, 80%, 0.9);
+	}
+	body > article pre span.number {
+		color: hsla(50, 100%, 80%, 0.8);
+	}
+	body > article pre span.regex {
+		color: hsla(76, 100%, 80%, 0.8);
+	}
+	body > article pre span.string {
+		color: hsla(210, 100%, 80%, 0.8);
+	}
+	body > article pre span.variable {
+		color: hsla(290, 100%, 80%, 0.8);
+	}
+
+/* @end */
