@@ -1,0 +1,8 @@
+<article>
+	<h1>Bash</h1>
+
+	<p>Save the following as <code>/usr/local/bin/git-disable-filemode</code> and then run <code>chmod +x git-disable-filemode</code> to make it executable.</p>
+	<p>And… Congratulations! You can now run <code>git-disable-filemode</code> in your problematic&#160;repositories.</p>
+
+	<pre>find . -type d -name .git -exec git --git-dir='{}' config core.filemode false \;</pre>
+</article>
