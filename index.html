@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>git filemode is annoying</title>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Slab:400,700&amp;v1" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise&amp;v1" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cantarell&amp;v1" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata&amp;v1" />
+<style type="text/css">
+
+	* {
+		border: none;
+		box-sizing: border-box;
+		font-family: inherit;
+		font-size: 100%;
+		font-style: inherit;
+		font-weight: inherit;
+		list-style: none;
+		margin: 0;
+		outline: none;
+		padding: 0;
+		vertical-align: baseline;
+	}
+	body {
+		background: hsl(0, 0%, 10%);
+		color: hsla(0, 0%, 80%, 0.6);
+		cursor: default;
+		font-family: 'cantarell', sans-serif;
+		font-size: 18px;
+		line-height: 20px;
+		padding: 80px 20px;
+	}
+	a {
+		color: #000000;
+		text-decoration: none;
+	}
+	*:first-child {
+		margin-top: 0;
+	}
+	*:last-child {
+		margin-bottom: 0;
+	}
+
+	body > header {
+		border-bottom: 10px solid hsla(0, 0%, 100%, 0.1);
+		margin: auto;
+		padding: 0 20px 20px 20px;
+		width: 645px;
+	}
+	body > header h1 {
+		color: hsla(0, 0%, 100%, 0.5);
+		font-family: 'josefin slab', sans-serif;
+		font-size: 110px;
+		font-weight: 400;
+		line-height: 95px;
+		margin: 0 0 80px 0;
+		text-shadow: 2px 2px 0 hsl(0, 0%, 0%);
+	}
+	body > header h1 em {
+		color: hsla(0, 0%, 100%, 0.8);
+		display: block;
+		font-size: 153px;
+		font-weight: 700;
+		text-indent: -2px;
+	}
+	body > header p {
+		color: hsla(0, 0%, 100%, 0.5);
+		font-family: 'waiting for the sunrise', sans-serif;
+		font-size: 32px;
+		line-height: 40px;
+		margin: 20px 0;
+	}
+	body > header p code,
+	body > header p em {
+		color: hsla(0, 0%, 100%, 0.8);
+		font-size: 36px;
+	}
+
+	body > article {
+		margin: auto;
+		padding: 30px 20px 0 20px;
+		width: 645px;
+	}
+	body > article a,
+	body > article code,
+	body > article em {
+		color: hsla(0, 0%, 80%, 0.9);
+	}
+	body > article p {
+		margin: 10px 0;
+	}
+	body > article pre {
+		background: hsla(0, 0%, 0%, 0.2);
+		border-radius: 20px;
+		font-family: 'inconsolata', sans-serif;
+		font-size: 16px;
+		margin: 20px -20px;
+		padding: 20px;
+	}
+	body > article pre span.comment {
+		color: hsla(0, 0%, 80%, 0.3);
+	}
+	body > article pre span.keyword {
+		color: hsla(0, 0%, 80%, 0.9);
+	}
+	body > article pre span.regex {
+		color: hsla(76, 100%, 80%, 0.8);
+	}
+	body > article pre span.string {
+		color: hsla(210, 100%, 80%, 0.8);
+	}
+
+</style>
+<header>
+	<h1>git filemode is <em>annoying</em></h1>
+	<p>It messes up my <code>git status</code>, causes <em>submodules</em> to conflict, and is generally a <em>nuisance</em> to disable or <em>work around</em>.</p>
+	<p>Which is why I've created this script.</p>
+</header>
+<article>
+	<p>Change the following path to point to your <code>node</code> binary, you can quickly find the path you need by running <code>which node</code>.</p>
+	<p>You'll also need to install <a href="http://npmjs.org/">npm</a> so that you can install the glob module by running <code>npm install glob</code>.</p>
+	<p>Once you've done that, save the file as <code>/usr/local/bin/git-disable-filemode</code> and then call <code>chmod +x git-disable-filemode</code> to make it executable.</p>
+	<p>And&hellip; Congratulations! You can now run <code>git-disable-filemode</code> in your problematic repositories.</p>
+	<pre>
+#!/usr/local/bin/node
+
+<span class="keyword">var</span> fs = <span class="keyword">require</span>(<span class="string">'fs'</span>),
+	glob = <span class="keyword">require</span>(<span class="string">'glob'</span>).globSync;
+
+<span class="keyword">var</span> updated_files = <span class="number">0</span>
+	skipped_files = <span class="number">0</span>;
+
+<span class="comment">// Find all git config files:</span>
+<span class="keyword">glob</span>(<span class="string">'**/.git/config'</span>).<span class="keyword">forEach</span>(<span class="keyword">function</span>(file) {
+	<span class="keyword">var</span> data = fs.<span class="keyword">readFileSync</span>(file, <span class="string">'utf8'</span>);
+
+	<span class="comment">// Filemode is enabled:</span>
+	<span class="keyword">if</span> (<span class="regex">/filemode\s*=\s*true/</span>.<span class="keyword">test</span>(data)) {
+		data = data.<span class="keyword">replace</span>(<span class="regex">/(filemode\s*=\s*)true/</span>, <span class="string">'$1false'</span>);
+
+		fs.<span class="keyword">writeFile</span>(file, data, <span class="string">'utf8'</span>);
+		updated_files++;
+	}
+
+	<span class="comment">// Filemode is disabled:</span>
+	<span class="keyword">else</span> {
+		skipped_files++;
+	}
+});
+
+console.<span class="keyword">log</span>(
+	<span class="string">'Disabled filemode in %d of %d repositories.'</span>,
+	updated_files, skipped_files
+);
+	</pre>
+</article>
