@@ -16,6 +16,7 @@
 	$template_xpath = new DOMXPath($template);
 
 	$nav = $template_xpath->query('//header/nav/ol')->item(0);
+	$footer = $template_xpath->query('//body/footer')->item(0);
 	$body = $template_xpath->query('//body')->item(0);
 
 	// Load all of the scripts and add them to the template:
@@ -52,6 +53,10 @@
 		);
 	}
 
+	// Move the footer to the end of the body:
+	$body->appendChild($footer);
+
+	// Output it!
 	echo $template->saveHTML();
 
 ?>

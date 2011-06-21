@@ -20,11 +20,15 @@
 		font-family: 'cantarell', sans-serif;
 		font-size: 18px;
 		line-height: 23px;
-		padding: 80px 20px;
+		padding: 80px 20px 40px 20px;
 	}
 	a {
-		color: #000000;
+		color: hsla(210, 100%, 80%, 0.8);
 		text-decoration: none;
+	}
+	a.active,
+	a:hover {
+		color: hsla(210, 100%, 100%, 0.8);
 	}
 	*:first-child {
 		margin-top: 0;
@@ -73,9 +77,11 @@
 	body > header nav {
 		margin: 20px 0;
 	}
-	body > header nav a {
+	body > header nav p {
 		color: hsla(0, 0%, 100%, 0.8);
 	}
+	body > header nav p,
+	body > header nav ol,
 	body > header nav li {
 		display: inline-block;
 	}
@@ -93,18 +99,29 @@
 
 /* @end */
 
+/* @group Header */
+
+	body > footer {
+		color: hsla(0, 0%, 100%, 0.5);
+		font-family: 'waiting for the sunrise', sans-serif;
+		font-size: 25px;
+		line-height: 40px;
+		margin: 40px auto;
+		padding: 0 20px 20px 20px;
+		text-align: center;
+		width: 645px;
+	}
+
+/* @end */
+
 /* @group Article */
 
 	body > article {
 		background: hsla(0, 0%, 0%, 0.2);
 		border-radius: 20px;
-		display: none;
 		margin: 20px auto 0 auto;
 		padding: 20px 20px 0 20px;
 		width: 645px;
-	}
-	body > article:target {
-		display: block;
 	}
 	body > article h1 {
 		font-family: 'waiting for the sunrise', sans-serif;
@@ -113,7 +130,6 @@
 		line-height: 35px;
 		margin: 0 0 20px 0;
 	}
-	body > article a,
 	body > article code,
 	body > article em {
 		color: hsla(0, 0%, 80%, 0.9);
