@@ -90,7 +90,6 @@
 	}
 	body > header nav li + li:last-child:before {
 		content: 'and';
-		margin: 0 0.8ex;
 	}
 	body > header nav li:last-child:after {
 		content: '.';
