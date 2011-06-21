@@ -17,9 +17,9 @@
 		background: hsl(0, 0%, 10%);
 		color: hsla(0, 0%, 80%, 0.6);
 		cursor: default;
-		font-family: 'cantarell', sans-serif;
-		font-size: 18px;
-		line-height: 23px;
+		font-family: 'goudy bookletter 1911', sans-serif;
+		font-size: 20px;
+		line-height: 25px;
 		padding: 80px 20px 40px 20px;
 	}
 	a {
@@ -43,7 +43,7 @@
 
 	body > header {
 		color: hsla(0, 0%, 100%, 0.5);
-		font-family: 'waiting for the sunrise', sans-serif;
+		font-family: 'goudy bookletter 1911', sans-serif;
 		font-size: 32px;
 		line-height: 40px;
 		margin: auto;
@@ -72,7 +72,6 @@
 	body > header p code,
 	body > header p em {
 		color: hsla(0, 0%, 100%, 0.8);
-		font-size: 36px;
 	}
 	body > header nav {
 		margin: 20px 0;
@@ -103,7 +102,7 @@
 
 	body > footer {
 		color: hsla(0, 0%, 100%, 0.5);
-		font-family: 'waiting for the sunrise', sans-serif;
+		font-family: 'goudy bookletter 1911', sans-serif;
 		font-size: 25px;
 		line-height: 40px;
 		margin: 40px auto;
@@ -124,7 +123,7 @@
 		width: 645px;
 	}
 	body > article h1 {
-		font-family: 'waiting for the sunrise', sans-serif;
+		font-family: 'goudy bookletter 1911', sans-serif;
 		font-size: 35px;
 		font-weight: 700;
 		line-height: 35px;
