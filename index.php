@@ -12,6 +12,7 @@
 
 	// Load the template:
 	$template = new DOMDocument('1.0', 'utf8');
+	$template->formatOutput = false;
 	$template->load('assets/template.html');
 	$template_xpath = new DOMXPath($template);
 
